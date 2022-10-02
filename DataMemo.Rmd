@@ -1,0 +1,52 @@
+---
+title: "Data Memo"
+author: "PSTAT 131 <br> Ian Low"
+date: "2022-10-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE,
+                      warning = FALSE)
+```
+
+## Overview
+The goal of this project is to predict the number of wins for each NFL team in 2022, up to week 12 (response/outcome variable), based on team statistics from weeks 1 to 4, excluding win counts. I chose weeks 1-4 as the predictor data set, because the current NFL season finishes up week 4 tomorrow evening, October 3. I chose week 12 as the cutoff for this project because finals week is the week after the conclusion of week 12. If time doesn't permit, I'll change the cutoff to the results following week 11. \
+\
+The dataset will contain averages from weeks 1-4 and wins up to week 12 for all 32 NFL teams over the past 5 seasons, totalling 160 observations. The predictors will include: 
+
+* Points Scored
+* Points Against
+* 1st Downs
+* Total Yards
+* Passing Yards
+* Rushing Yards
+* Turnovers Lost 
+
+\
+These predictors will be used with a regression approach, with the goal of producing an accurate predictive or predictive/inferential model for the amount of wins in a season. My early guess is that "Points Against" and "Turnovers Lost" will have a negative correlation with the win prediction, and all the other predictors will have a positive correlation. I believe that "Points Scored" and "Points Against" will be the strongest predictors, while Passing and Rushing Yards will have the least effect on wins out of those predictors. \
+\
+The training data, 2017-2021 seasons, will be collected from https://www.pro-football-reference.com/. This data will have 640 data points (32 teams * 5 seasons * 4 weekly games), with the 4 weekly game statistics averaged out for data cleanliness and viewers' ease. The testing data (2022 season results) will be collected from https://www.kaggle.com/datasets/mattop/2022nfl-team-offense, which in turn gets the data from PFR (training data source). \
+\
+"Missing" data will come in the form of bye weeks, where an NFL team gets a week rest and doesn't play. Since bye weeks are assigned randomly to each nfl team from weeks 6-14, the majority, but not all, teams will play 11 games over 12 weeks. Teams that had bye weeks in weeks 13-14 will have played 12 games by week 12. I'll address this by calculating a win percentage estimate instead of a win count estimate, and will multiply that percentage estimate by the amount of games played when determining how accurate the model was for both training and testing data. \
+\
+
+## Timeline
+I anticipate having 9 weeks until the project is due.
+
+### Weeks 1-2: Loading data
+Pro Football Reference (PFR) only has weekly data sorted by team, by year. For each of the 160 observations (32 teams * 5 seasons), the following steps are needed: 
+
+* Export data table to a csv file
+* Keep data only from weeks 1-4
+* Average the 4 data points (1 row remains per observation) 
+* Add season win percentage up to week 12
+* Add the new observation row to master dataset
+\
+
+### Weeks 3-7 Work on model
+I'm not too familiar with the process yet, so I'll develop the model and work on formatting as we go over different methods in class. 
+\
+
+### Weeks 8-9: Finish project
+At the conclusion of week 12 (or 11) of the NFL season, I'll have the full testing set data. I can then test model accuracy and wrap up the content/formatting for this project.
